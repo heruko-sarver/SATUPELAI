@@ -1,433 +1,116 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>GARUDA RULEXX</title>
-
+    <title>Token Validator</title>
     <style>
-
-        * {
-
-            margin: 0;
-
-            padding: 0;
-
-            box-sizing: border-box;
-
-            font-family: 'Poppins', sans-serif;
-
-        }
-
         body {
-
-            background: linear-gradient(120deg, #000000, #002200, #004400);
-
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://i.ibb.co/C7Ftpym/e2ef1cc3fff03b5d3edaa6e7ffcb2ac1.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: #fff;
-
-            text-align: center;
-
-            transition: background 0.5s ease;
-
-            overflow-x: hidden;
-
         }
-
-        /* Navigation */
-
-        .nav-container {
-
-            position: relative;
-
-            top: 0;
-
-            width: 100%;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            padding: 20px;
-
-            background: #004400;
-
-            z-index: 1000;
-
-            box-shadow: 0 8px 20px rgba(0, 119, 0, 0.4);
-
-            border-bottom: 3px solid #007700;
-
-        }
-
-        .brand-name {
-
-            font-size: 2em;
-
-            font-weight: bold;
-
-            color: #fff;
-
-            text-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
-
-            text-transform: uppercase;
-
-            letter-spacing: 2px;
-
-        }
-
-        .menu-icon {
-
-            cursor: pointer;
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 7px;
-
-        }
-
-        .menu-icon div {
-
-            width: 40px;
-
-            height: 5px;
-
-            background-color: #fff;
-
-            transition: 0.3s;
-
-            border-radius: 5px;
-
-        }
-
-        .menu-icon:hover div {
-
-            background: #00cc00;
-
-        }
-
-        /* Contact Menu */
-
-        .contact-menu {
-
-            display: none;
-
-            position: absolute;
-
-            top: 70px;
-
-            right: 20px;
-
-            background: #003300;
-
-            padding: 15px;
-
-            border-radius: 10px;
-
-            box-shadow: 0px 0px 18px rgba(0, 255, 0, 0.5);
-
-            text-align: left;
-
-            z-index: 1001;
-
-        }
-
-        .contact-menu a {
-
-            display: block;
-
-            color: #00cc00;
-
-            text-decoration: none;
-
-            padding: 7px 0;
-
-            font-weight: bold;
-
-            transition: color 0.3s ease;
-
-        }
-
-        .contact-menu a:hover {
-
-            color: #fff;
-
-        }
-
-        /* Beautiful GARUDA SERVICE Heading */
-
-        .GARUDA-service {
-
-            font-size: 2em;
-
-            font-weight: bold;
-
-            margin-top: 120px;
-
-            text-shadow: 0px 0px 15px rgba(0, 255, 0, 0.7);
-
-            color: #00cc00;
-
-            letter-spacing: 3px;
-
-            text-transform: uppercase;
-
-        }
-
-        /* Card Container */
-
         .container {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            justify-content: center;
-
-            gap: 25px;
-
-            padding: 50px 20px;
-
-        }
-
-        .card {
-
-            width: 330px;
-
-            background: rgba(0, 30, 0, 0.95);
-
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
-
-            overflow: hidden;
-
-            border: 2px solid #007700;
-
-            box-shadow: 0px 6px 18px rgba(0, 255, 0, 0.3);
-
-            position: relative;
-
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
             text-align: center;
-
-            padding-bottom: 20px;
-
         }
-
-        .card:hover {
-
-            transform: rotateX(3deg) rotateY(-3deg);
-
-            box-shadow: 0px 0px 25px rgba(0, 255, 0, 0.7);
-
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #ffdd57;
         }
-
-        .card img {
-
-            width: 100%;
-
-            height: 210px;
-
-            object-fit: cover;
-
-            border-bottom: 2px solid #007700;
-
+        p {
+            font-size: 18px;
+            margin-bottom: 30px;
         }
-
-        .card h2 {
-
-            font-size: 1.6em;
-
-            margin: 15px 0;
-
-            color: #00cc00;
-
-            text-shadow: 0px 0px 10px rgba(0, 255, 0, 0.8);
-
-        }
-
-        .card p {
-
-            font-size: 1em;
-
-            margin: 0 15px 15px;
-
-            color: #bbb;
-
-        }
-
-        .explore-btn {
-
-            display: inline-block;
-
-            padding: 12px 22px;
-
-            margin-top: 10px;
-
-            font-size: 1em;
-
-            color: #fff;
-
-            background: linear-gradient(90deg, #00cc00, #008f00);
-
+        input[type="file"] {
+            display: block;
+            margin: 0 auto 20px;
+            padding: 10px;
+            font-size: 16px;
+            background: #ffdd57;
             border: none;
-
-            border-radius: 6px;
-
+            border-radius: 5px;
             cursor: pointer;
-
-            text-decoration: none;
-
-            font-weight: bold;
-
-            transition: background 0.3s ease;
-
         }
-
-        .explore-btn:hover {
-
-            background: linear-gradient(90deg, #009900, #006600);
-
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            color: #fff;
+            background: #ff4d4d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
         }
-
-        /* Footer */
-
-        . footer {
-
+        button:hover {
+            background: #ff3333;
+        }
+        .results {
+            margin-top: 30px;
+        }
+        .box {
+            text-align: left;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-family: monospace;
+            overflow: auto;
+        }
+        .box.green {
+            background: rgba(34, 177, 76, 0.9);
+            border: 2px solid #22b14c;
+            color: #fff;
+        }
+        .box.red {
+            background: rgba(237, 28, 36, 0.9);
+            border: 2px solid #ed1c24;
+            color: #fff;
+        }
+        .copy-btn {
+            display: inline-block;
             margin-top: 10px;
-
-            font-size: 12px;
-
-            color: black;
-
-            text-align: center;
-
+            padding: 5px 15px;
+            color: #fff;
+            background: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
         }
-
+        .copy-btn:hover {
+            background: #0056b3;
+        }
     </style>
-
 </head>
-
 <body>
-
-    <!-- Navigation Bar -->
-
-    <div class="nav-container">
-
-        <div class="brand-name">GARUDA LEGENDS</div>
-
-        <div class="menu-icon" onclick="toggleMenu()">
-
-            <div></div>
-
-            <div></div>
-
-            <div></div>
-
+    <div class="container">
+        <h1>Token Validator</h1>
+        <p>Upload a file to validate tokens and categorize them as Live or Expired.</p>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" name="file" id="fileInput" accept=".txt" required>
+            <button type="submit">Validate Tokens</button>
+        </form>
+        <div class="results">
+            <div class="box green" id="liveTokensBox">
+                <h3>Live Tokens</h3>
+                <pre id="liveTokens"></pre>
+                <button class="copy-btn" onclick="copyText('liveTokens')">Copy Live Tokens</button>
+            </div>
+            <div class="box red" id="expiredTokensBox">
+                <h3>Expired Tokens</h3>
+                <pre id="expiredTokens"></pre>
+                <button class="copy-btn" onclick="copyText('expiredTokens')">Copy Expired Tokens</button>
+            </div>
         </div>
-
     </div>
-
-    <!-- Contact Menu -->
-
-    <div class="contact-menu" id="contactMenu">
-
-        <a href="https://wa.me/7568053340">📞 Contact Us</a>
-
-        <a href="/cdn-cgi/l/email-protection#debfb0adb6acbfb4aeabaaa6ba9eb9b3bfb7b2f0bdb1b3">📧 Email Support</a>
-
-    </div>
-
-    <!-- Beautiful GARUDA Service Heading -->
-
-    
-
-<div class="container">
-
-    <div class="card">
-
-        <img src="https://i.ibb.co/39gSRct4/Flux-Dev-A-futuristic-hightech-3-D-typography-design-featuring-3-4.jpg" alt="Convo multi">
-
-        <h2>Premium Service</h2>
-
-        <p>Unlock exclusive premium services designed for our elite users. Get access to advanced tools, VIP support, and a seamless experience.</p>
-
-        <a href="service.php" class="explore-btn">Explore</a>
-
-    </div>
-
-    <div class="card">
-
-        <img src="https://i.ibb.co/Kz3HDR8f/Flux-Dev-A-futuristic-hightech-3-D-typography-design-featuring-3-3.jpg" alt="Convo 2">
-
-        <h2>Free Limited Service</h2>
-
-        <p>Try our free services with limited access. Want more? Upgrade to unlock premium tools and exclusive features.</p>
-
-        <a href="free.php" class="explore-btn">Explore</a>
-
-    </div>
-
-    <div class="card">
-
-        <img src="https://i.ibb.co/9HyP20mx/Flux-Dev-A-futuristic-hightech-3-D-typography-design-featuring-1-1.jpg" alt="Post Token">
-
-        <h2>Purchase plan</h2>
-
-        <p>Choose the perfect plan that fits your needs. Get premium access with powerful tools and priority support.</p>
-
-        <a href="price.php" class="explore-btn">Explore</a>
-
-    </div>
-
-    <div class="card">
-
-        <img src="https://i.ibb.co/mCmKPFZx/Flux-Dev-A-futuristic-hightech-3-D-typography-design-featuring-0.jpg" alt="Page Token Extract Loader">
-
-        <h2>Contact Support</h2>
-
-        <p>Have any questions or need assistance? Contact us anytime—we're here to help!</p>
-
-        <a href="contact.php" class="explore-btn">Explore</a>
-
-    </div>
-
-    <div class="card">
-
-        <img src="https://i.ibb.co/7tgN5KS2/9b48a851-1143-488d-9213-5d2b501d1540.webp" alt="Post Cookies">
-
-        <h2>Developer Info</h2>
-
-        <p>This website is crafted with passion and expertise by [Developer GARUDA RulleX]. Dedicated to creating seamless and efficient web solutions.</p>
-
-        <a href="developer.php" class="explore-btn">View Profile</a>
-
-    </div>
-
-    <div class="footer">© 2024 - 2025 Garuda siingh. All Rights Reserved.</div>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-
-        function toggleMenu() {
-
-            let contactMenu = document.getElementById("contactMenu");
-
-            contactMenu.style.display = (contactMenu.style.display === "block") ? "none" : "block";
-
-        }
-
-    </script>
-
 </body>
-
 </html>
-
-<!-- Fetched using API by @JSOrganization and owned by @itsSowrov -->
